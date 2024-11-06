@@ -1,22 +1,21 @@
 const data = [
-  { type: "food", name: "Pizza" },
-  { type: "drink", name: "Coffee" },
-  { type: "food", name: "Hot Dog" },
+    { type: 'food', name: 'Pizza' },
+    { type: 'drink', name: 'Coffee' },
+    { type: 'food', name: 'Hot Dog' }
 ];
 
 console.log(group(data, (item) => item.type));
 
 function group(array, func) {
-  // return Object.groupBy(array, func)
+    // return Object.groupBy(array, func)
 
-  const result = {};
-  let key;
-  for (const el of array) {
-    key = func(el);
-    if (!key[el]) {
-      result[key] = [];
+    const result = {};
+    for (const el of array) {
+        const key = func(el);
+        if (!result[key]) {
+            result[key] = [];
+        }
+        result[key].push(el);
     }
-    result[key].push(el);
-  }
-  return result;
+    return result;
 }
